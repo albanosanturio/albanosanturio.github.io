@@ -1,142 +1,220 @@
-<!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Albano Santurio · Data Engineer</title>
+<meta name="description" content="Data projects by Albano Santurio: pipelines, analysis, dashboards, cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3EEE4; --white:#FBF9F4; --ink:#141414; --muted:#55524C;
+    --red:#B0563F; --blue:#3F5C7A; --yellow:#D4AE5C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Jost',system-ui,sans-serif;line-height:1.5}
+  a{color:var(--ink)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>About me | Albano Santurio</title>
-<meta name="generator" content="Jekyll v3.9.0">
-<meta property="og:title" content="About me">
-<meta property="og:locale" content="en_US">
-<meta name="description" content="Some of my works and projects in data">
-<meta property="og:description" content="Some of my works and projects in data">
-<link rel="canonical" href="https://albanosanturio.github.io/">
-<meta property="og:url" content="/">
-<meta property="og:site_name" content="Albano Santurio">
-<meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="About me">
-<script type="application/ld+json">
-{"description":"Some of my works and regarding data","url":"/","@type":"WebSite","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/img/foto.jpeg"}},"headline":"About me","name":"Albano Santurio","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
+  /* Header */
+  header{border-bottom:3px solid var(--ink)}
+  header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;padding-bottom:16px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand span{font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase}
+  .links{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:15px;font-weight:500}
+  .links a{text-decoration:none}
+  .links a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+  .btn{display:inline-flex;align-items:center;min-height:40px;padding:8px 18px;background:var(--ink);color:var(--white)!important;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;text-decoration:none;border:2px solid var(--ink)}
+  .btn:hover{background:var(--red);border-color:var(--red)}
+  .band{display:grid;grid-template-columns:3fr 1fr 2fr;height:4px}
+  .band i:nth-child(1){background:var(--blue)} .band i:nth-child(2){background:var(--yellow)} .band i:nth-child(3){background:var(--red)}
 
-    <link rel="stylesheet" href="./github-template_files/style.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="https://albanosanturio.github.io/">Albano Santurio</a></h1>
-        
-        
-          <img src="./github-template_files/fot.jpg" alt="Logo">
-        
+  /* Intro + experience */
+  .intro{padding:32px 0 28px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:start}
+  .who{display:flex;gap:28px;align-items:flex-start}
+  .photo{position:relative;flex:0 0 120px;margin:6px 8px 8px 0}
+  .photo::before{content:"";position:absolute;inset:8px -8px -8px 8px;background:var(--yellow)}
+  .photo img{position:relative;display:block;width:120px;height:120px;object-fit:cover;border:2px solid var(--ink)}
+  .intro p{margin:0 0 10px;font-size:17px;max-width:640px}
+  .intro p:last-child{margin-bottom:0}
+  .xp-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .xp-head i{width:10px;height:10px;background:var(--blue);display:inline-block}
+  .xp{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink);font-size:15px}
+  .xp li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #CFC8BA}
+  .xp b{font-weight:600}
+  .xp span{color:var(--muted);text-align:right}
 
-        <p>Some of my works and projects regarding data</p>
+  /* Projects */
+  .projects{padding:8px 0 48px}
+  .section-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .section-head h2{margin:0;font-size:22px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .section-head i{width:14px;height:14px;border-radius:50%;background:var(--red);display:inline-block}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
 
-        
+  .card{background:var(--white);border:2px solid var(--ink);display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease}
+  .card:hover,.card:focus-within{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--ink)}
+  .shot{position:relative;aspect-ratio:1024/572;border-bottom:2px solid var(--ink);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot svg{width:100%;height:100%;display:block}
+  .flow{position:absolute;inset:0;background:var(--ink);color:var(--white);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px 18px;opacity:0;transition:opacity .15s ease}
+  .flow .label{color:var(--yellow)}
+  .flow .steps{font-size:13px;line-height:1.7}
+  .card:hover .flow,.card:focus-within .flow{opacity:1}
 
-        <p class="view">
-        
-          <a href="https://github.com/albanosanturio"><img src="./github-template_files/icon_GH.png" width="45" height="45" alt="GitHub"></a>
-          &nbsp; &nbsp;
-          <a href="https://www.linkedin.com/in/albano-santurio/"><img src="./github-template_files/icon_in.png" width="45" height="45" alt="Linkedin"></a>
-          &nbsp; &nbsp;
-          <a href="mailto:albanosanturio@gmail.com"><img src="./github-template_files/icon_mail.png" width="45" height="45" alt="Enviar Correo"></a>
-          &nbsp; &nbsp;
-          <a href="https://albanosanturio.github.io/assets/pdf/CV2026.pdf"><img src="./github-template_files/curriculum.png" width="45" height="45" alt="Descargar CV"></a>
-          
-          </p>
+  .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .card h3{margin:0;font-size:19px;font-weight:600}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tags span{font-size:12px;border:1.5px solid var(--ink);padding:2px 8px}
+  .actions{display:flex;gap:20px;margin-top:auto;padding-top:6px;font-size:15px;font-weight:600}
+  .actions a{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+  .card.red .actions a{text-decoration-color:var(--red)}
+  .card.blue .actions a{text-decoration-color:var(--blue)}
+  .card.yellow .actions a{text-decoration-color:var(--yellow)}
 
-       
-      </header>
-      <section>
+  .wip{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;border:1.5px solid var(--ink);padding:10px 16px;font-size:15px}
+  .wip .label{display:inline-flex;align-items:center;gap:8px}
+  .wip .label::before{content:"";width:10px;height:10px;background:var(--yellow)}
 
-      <h1 id="about-me">About me</h1>
+  /* Footer */
+  footer{background:var(--ink);color:var(--white)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;padding-top:24px;padding-bottom:30px;font-size:15px}
+  footer a{color:var(--white);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
 
-<p>My name is Albano Santurio, formed as an industrial engineer. Working with all things related to data. Experience in many business fields, i.e.: retail, automotive, logistics, energy, food&beverage, agriculture, farming, you name it. Curious soul all around.  </p>
+  /* Touch screens: show the flow as a strip */
+  @media (hover:none){
+    .flow{opacity:1;inset:auto 0 0 0;padding:8px 12px}
+    .flow .label{display:none}
+    .flow .steps{font-size:12px;line-height:1.5}
+  }
+  @media (max-width:760px){
+    .intro{grid-template-columns:1fr;gap:24px}
+  }
+  @media (max-width:520px){
+    .who{flex-direction:column;gap:16px}
+    .photo,.photo img{width:96px;height:96px;flex-basis:96px}
+  }
+</style>
+</head>
+<body>
 
-<p>In this site, you will find some data mini-projects (mostly using python), including exploratory data analysis, basic data-science models, dashboards and some cloud storage and functions. Lately playing around with AI assistants and workflows automations.</p>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg width="26" height="20" viewBox="0 0 26 20" aria-hidden="true">
+        <rect x="0"  y="12" width="5" height="8"  fill="#3F5C7A"/>
+        <rect x="7"  y="6"  width="5" height="14" fill="#D4AE5C"/>
+        <rect x="14" y="0"  width="5" height="20" fill="#B0563F"/>
+        <rect x="21" y="9"  width="5" height="11" fill="#141414"/>
+      </svg>
+      <span>Albano Santurio</span>
+    </a>
+    <nav class="links">
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/albanosanturio">GitHub</a>
+      <a href="https://www.linkedin.com/in/albano-santurio/">LinkedIn</a>
+      <a href="mailto:albanosanturio@gmail.com">Email</a>
+      <a class="btn" href="https://albanosanturio.github.io/assets/pdf/CV2026.pdf">CV</a>
+    </nav>
+  </div>
+</header>
+<div class="band" aria-hidden="true"><i></i><i></i><i></i></div>
 
+<main class="wrap">
 
-<h1 id="projects">Live projects</h1>
-
-
-
-<blockquote>
-  <p><strong>Food delivery operations dashboard</strong><br>
-<em>Streamlit dashboard on a foodpanda dataset. Exploratory analysis using pandas.</em><br>
-<a href="https://foodpanda-analytics-demo.streamlit.app/">Live demo</a> &nbsp;·&nbsp; <a href="https://github.com/albanosanturio/foodpanda-analytics">Source code</a></p>
-</blockquote>
-
-<blockquote>
-  <p><strong>Data skills monitoring</strong><br>
-<em>Scrapes job postings from Indeed, extracts skill requirements, and tracks Python package adoption trends. End-to-end data pipeline demonstrating ETL, warehouse design, and analytics. Python / Playwright / PostgreSQL / dbt / Streamlit</em><br>
-<a href="https://data-skills-monitor-demo.streamlit.app/">Live demo</a> &nbsp;·&nbsp; <a href="https://github.com/albanosanturio/data-skills-monitor">Source code</a></p>
-</blockquote>
-
-<blockquote>
-  <p><strong>Stocks and crypto feed - Dashboard and API</strong><br>
-    <em>Retrieving data from crypto / stocks / federal reserve endpoints, summarizing, dashboarding and serving API endpoints for consumption</em></p>
-  <a href="https://market-data-api-621108396421.us-central1.run.app/">Live demo</a> &nbsp;·&nbsp; <a href="https://github.com/albanosanturio/stocks-crypto-n-gcp">Source code</a></p>
-
-  </blockquote>
-
-
-<h1 id="projects">WIP projects</h1>
-
-<blockquote>
-  <p><a href="https://github.com/albanosanturio/project">Hermes agent assistant</a>
-    <em>AI assistant enabled to follow github projects and update notes "second brain"</em></p>
-  </blockquote>
-
-  <blockquote>
-  <p><a href="https://github.com/albanosanturio/project">MS Fabric - ETL pipeline</a>
-    <em>Data pipeline on microsoft infrastructure - source to serving. Streaming and batch data</em></p>
-  </blockquote>
-
-
-
-<h1 id="projects">TO-DO projects</h1>
-
-
-<blockquote>
-  <p><a href="http://albanosanturio.github.io/project">Data notebook - python</a>
-<em>EDA using python and Jupyter Notebook. Data cleaning / wrangling / REGEX / plots </em></p>
-</blockquote>
-
-<blockquote>
-  <p><a href="http://albanosanturio.github.io/project">MLops - Deploying models</a>
-<em>Use case - comparative with LLM use - details</em></p>
-</blockquote>
-
-<blockquote>
-  <p><a href="http://albanosanturio.github.io/project">LLM pipeline</a>
-<em>SME document assistant</em></p>
-</blockquote>
-
-<!--
-
-<blockquote>
-  <p><a href="http://albanosanturio.github.io/project">Python Web App - WIP </a>
-<em>Building and deploying a python web app using Flask, Postgres and Heroku - WIP</em></p>
-</blockquote>
--->
-
-
-
-
-
-
-
-
-      </section>
-      <footer>
-        
-      </footer>
+  <section class="intro">
+    <div class="who">
+      <div class="photo"><img src="assets/img/albano.jpg" alt="Albano Santurio" width="120" height="120"></div>
+      <div>
+      <p>Industrial engineer (UBA). 6+ years working on data platforms, analytics and consulting projects across retail, automotive, logistics, energy, food &amp; beverage, agriculture and farming, you name it. Curious soul all around.</p>
+      <p>On this site you'll find data projects: pipelines, analysis, dashboards and multi-cloud services. Lately playing around with AI assistants and workflow automation.</p>
+      </div>
     </div>
-    <script src="./github-template_files/scale.fix.js"></script>
-    
-  
+    <div>
+      <div class="xp-head"><i aria-hidden="true"></i><span class="label">Experience</span></div>
+      <ul class="xp">
+        <li><b>NTT DATA</b><span>Data Engineer</span></li>
+        <li><b>Media.Monks</b><span>Analytics Consultant</span></li>
+        <li><b>Accenture</b><span>Management Consultant</span></li>
+        <li><b>Grupo Mirgor</b><span>Business Analyst</span></li>
+      </ul>
+    </div>
+  </section>
 
-</body></html>
+  <section class="projects" id="projects">
+    <div class="section-head"><i aria-hidden="true"></i><h2>Projects</h2></div>
+    <div class="grid">
+
+      <article class="card red">
+        <div class="shot">
+          <img src="assets/img/data-skills-monitor.png" alt="Illustration of job postings flowing from Indeed into a skills pipeline" loading="lazy">
+          <div class="flow"><span class="label">Pipeline</span><span class="steps mono">Indeed → Playwright → PostgreSQL → Streamlit</span></div>
+        </div>
+        <div class="body">
+          <h3>Data Skills Monitor</h3>
+          <p>Scrapes data job postings and tracks which skills come up most often.</p>
+          <div class="tags mono"><span>501 postings</span><span>ETL</span><span>Web scraping</span></div>
+          <div class="actions">
+            <a href="https://data-skills-monitor-demo.streamlit.app/">Live demo</a>
+            <a href="https://github.com/albanosanturio/data-skills-monitor">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card blue">
+        <div class="shot">
+          <img src="assets/img/market-data-api.png" alt="Illustration of market and crypto data flowing through GCP into an API and storage" loading="lazy">
+          <div class="flow"><span class="label">Pipeline</span><span class="steps mono">APIs → Cloud Run → BigQuery → FastAPI / Looker Studio</span></div>
+        </div>
+        <div class="body">
+          <h3>Market Data API</h3>
+          <p>Daily stocks, crypto and Fed data on GCP, served as an API and a dashboard.</p>
+          <div class="tags mono"><span>GCP</span><span>API</span><span>Cloud Functions</span></div>
+          <div class="actions">
+            <a href="https://market-data-api-621108396421.us-central1.run.app/docs">API docs</a>
+            <a href="https://github.com/albanosanturio/stocks-crypto-n-gcp">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card yellow">
+        <div class="shot">
+          <img src="assets/img/food-delivery-dashboard.png" alt="Illustration of a delivery rider and a Streamlit dashboard built on a Kaggle foodpanda dataset" loading="lazy">
+          <div class="flow"><span class="label">Pipeline</span><span class="steps mono">CSV → pandas → Streamlit</span></div>
+        </div>
+        <div class="body">
+          <h3>Food Delivery Ops Dashboard</h3>
+          <p>Exploratory analysis of a food delivery dataset, as an interactive dashboard.</p>
+          <div class="tags mono"><span>EDA</span><span>Dashboard</span></div>
+          <div class="actions">
+            <a href="https://foodpanda-analytics-demo.streamlit.app/">Live demo</a>
+            <a href="https://github.com/albanosanturio/foodpanda-analytics">Code</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="wip"><span class="label">In progress</span><span>Microsoft Fabric + dbt pipeline, batch and streaming.</span></div>
+
+    <div class="wip"><span class="label">In progress</span><span>N8N + LLM use</span></div>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="mailto:albanosanturio@gmail.com">albanosanturio@gmail.com</a>
+    <a href="https://www.linkedin.com/in/albano-santurio/">LinkedIn</a>
+    <a href="https://github.com/albanosanturio">GitHub</a>
+    <a href="https://albanosanturio.github.io/assets/pdf/CV2026.pdf">CV (PDF)</a>
+  </div>
+</footer>
+
+</body>
+</html>
